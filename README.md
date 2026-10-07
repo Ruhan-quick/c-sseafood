@@ -7,16 +7,17 @@ Static website for Raisa Global Trading, Dhaka: plain HTML, one shared styleshee
 ```
 index.html                     Home
 about.html                     About Raisa Global Trading
+produce.html                   Fruits & Vegetables (16 vegetables, 8 fruits)
 services.html
 quality-policy.html            Quality
-products.html                  All products
+products.html                  Seafood (all ten lines)
 products/<product>.html        One page per product (10), with specification and photo gallery
 contact.html
 privacy-policy.html
 terms-of-use.html
 assets/css/site.css            All styles (colours are the variables at the top)
 assets/js/site.js              Menu, dropdowns, photo lightbox, enquiry form
-assets/img/                    Logo, photos, product images, gallery
+assets/img/                    Logo, photos, seafood images and galleries, produce photos (assets/img/produce/)
 ```
 
 ## Preview locally
@@ -55,6 +56,17 @@ Phone, WhatsApp, email and street address are placeholders until Raisa's real de
 | `[Street address], Dhaka, Bangladesh` | Full address |
 
 The enquiry form sends to the email and WhatsApp number in the `data-email` and `data-whatsapp` attributes of the form in `contact.html`, so replacing the placeholders updates it too.
+
+## Fruits & vegetables range
+
+The produce page lists common Bangladeshi export staples as a starting point, because the Facebook page doesn't publicly list what Raisa sells. Trim it to the real range:
+
+- **Vegetables:** bitter gourd, pointed gourd, bottle gourd, snake gourd, teasel gourd, okra, brinjal, green chilli, taro, yardlong bean, hyacinth bean, potato, pumpkin, cauliflower, green banana, coriander leaves
+- **Fruits:** mango, jackfruit, lime, pineapple, litchi, guava, papaya, coconut
+
+Each item is one `<li class="crop">` in `produce.html`; delete the ones he doesn't sell. Four of them also appear in the "Fresh produce, too." section of `index.html`.
+
+The produce photos come from Wikimedia Commons under CC0, public domain, CC BY or CC BY-SA licences. Their credits are listed under "Photo credits" on `produce.html`. Keep that list while those photos are used, and remove an entry when you replace its photo with Raisa's own.
 
 ## Editing
 
