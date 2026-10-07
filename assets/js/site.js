@@ -1,4 +1,4 @@
-/* Sumaya Seafood — shared behaviour */
+/* Raisa Global Trading — shared behaviour */
 (() => {
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
@@ -80,6 +80,8 @@
   const form = $('#enquiry');
   if (form) {
     const status = $('.form-status', form);
+    const toEmail = form.dataset.email;
+    const toWhatsApp = form.dataset.whatsapp;
     const productField = $('#f-product', form);
     const requested = new URLSearchParams(location.search).get('product');
     if (requested && [...productField.options].some(o => o.value === requested)) productField.value = requested;
@@ -110,14 +112,14 @@
       e.preventDefault();
       if (!valid()) return;
       const { subject, body } = compose();
-      window.location.href = `mailto:info@sumayaseafoodbd.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      status.textContent = 'Your email app should now open with the enquiry filled in. If nothing happens, write to info@sumayaseafoodbd.com.';
+      window.location.href = `mailto:${toEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      status.textContent = `Your email app should now open with the enquiry filled in. If nothing happens, write to ${toEmail}.`;
     });
 
     $('#send-wa', form).addEventListener('click', () => {
       if (!valid()) return;
       const { subject, body } = compose();
-      window.open(`https://wa.me/8801712996456?text=${encodeURIComponent(subject + '\n\n' + body)}`, '_blank', 'noopener');
+      window.open(`https://wa.me/${toWhatsApp}?text=${encodeURIComponent(subject + '\n\n' + body)}`, '_blank', 'noopener');
       status.textContent = 'WhatsApp should open in a new tab with your enquiry ready to send.';
     });
   }
